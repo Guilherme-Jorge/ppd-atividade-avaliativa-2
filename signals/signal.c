@@ -6,21 +6,25 @@
 
 volatile sig_atomic_t keep_running = 1;
 
-void handle_sigint(int sig) {
+void handle_sigint(int sig)
+{
     printf("\nCaught SIGINT (Ctrl+C)! Cleaning up...\n");
     keep_running = 0;
 }
 
-void handle_sigterm(int sig) {
+void handle_sigterm(int sig)
+{
     printf("\nCaught SIGTERM! Performing graceful shutdown...\n");
     keep_running = 0;
 }
 
-void handle_sigusr1(int sig) {
+void handle_sigusr1(int sig)
+{
     printf("\nCaught SIGUSR1! Performing custom action...\n");
 }
 
-int main() {
+int main()
+{
     struct sigaction sa_int, sa_term, sa_usr1;
     int counter = 0;
 
@@ -45,7 +49,8 @@ int main() {
     printf("kill -USR1 %d  # Send SIGUSR1\n", getpid());
     printf("Or press Ctrl+C in this terminal\n\n");
 
-    while (keep_running) {
+    while (keep_running)
+    {
         printf("Working... (count: %d)\r", counter++);
         fflush(stdout);
         sleep(1);
