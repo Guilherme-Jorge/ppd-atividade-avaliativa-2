@@ -14,11 +14,6 @@ typedef struct
   pthread_cond_t write_cond;
 } SharedData;
 
-void *reader(void *arg);
-void *writer(void *arg);
-void init_shared_data(SharedData *data);
-void cleanup_shared_data(SharedData *data);
-
 void init_shared_data(SharedData *data)
 {
   data->value = 0;
